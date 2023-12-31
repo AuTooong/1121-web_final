@@ -1,3 +1,6 @@
 ipControl/account/__pycache__/*
 ipControl/IP/__pycache__/*
 ipControl/ipControl/__pycache__/*
+ipControl/account/migrations/__pycache__
+ipControl/IP/migrations/__pycache__
+ipControl/ipControl/migrations/__pycache__
