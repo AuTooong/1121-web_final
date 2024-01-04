@@ -1,0 +1,27 @@
+{% extends "master.html" %}
+{% load static %}
+
+{% block title %}
+  IP 控管主頁
+{% endblock %}
+
+
+{% block content %}
+<div class="container mt-2">
+  <div class='row'>
+    <div class="col-md-6">
+        <h2 class='text-success'>Members</h2>
+        <p>
+          歡迎加入我們的網站！作為我們網球俱樂部的會員
+          <button type="button" class="btn btn-primary" onclick="window.location.href='/members'">See Members</button>  
+    </div>
+
+    <div class="col-md-6">
+        <h2 class='text-success'>Court</h2>
+        <p>
+          網球球場，是一個凝聚運動激情與技藝表現的場所
+          <button type="button" class="btn btn-primary" onclick="window.location.href='/courts'">See Courts</button>  
+    </div>
+  </div>    
+</div>
+{% endblock %}
