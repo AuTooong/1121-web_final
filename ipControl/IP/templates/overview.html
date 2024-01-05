@@ -6,12 +6,28 @@
 {% endblock %}
 
 
+
 {% block content %}
-<div class="container mt-2">
-  <div class='row'>
+<div class="container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">IP</th>
+          <th scope="col">服務種類</th>
+          <th scope="col">軟體名稱</th>
+          <th scope="col">OS</th>
+        </tr>
+      </thead>
     {% for ip in all_ip %}
-    <li>{{ ip.ip }}</li>
+      <tbody>
+        <tr>
+          <td>{{ ip.ip }}</td>
+          <td>{{ ip.service }}</td>
+          <td>{{ ip.product }}</td>
+          <td>{{ ip.os }}</td>
+        </tr>
+      </tbody>
     {% endfor %}
-  </div>    
+    </table>
 </div>
 {% endblock %}
