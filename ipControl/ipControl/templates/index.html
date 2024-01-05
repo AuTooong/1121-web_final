@@ -15,10 +15,12 @@
   <div class='row'>
     <div class="col-md-12">
         <h2 class='text-success'>About</h2>
+        {% if not user.is_authenticated %}
         <p>
           歡迎加入我們的網站！作為我們網球俱樂部的會員
           <a href="/account/login" class="btn btn-primary">登入</a>  
         </p>
+        {% endif %}
     </div>
   </div>    
 </div>

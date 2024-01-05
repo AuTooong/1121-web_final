@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from .models import User
 from django.template import loader
 from django.http import HttpResponse
@@ -10,14 +10,12 @@ def login_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        try:
-            user = User.objects.get(username=username, password=password)
-        except:
-            user = None
+        user=authenticate(request, username=username, password=password)
 
         if user is not None:
             print("登入成功")
             # 登入成功後的重定向，可以根據需求修改
+            login(request, user)
             return redirect('/')
         else:
             # 登入失敗的處理，例如顯示錯誤訊息
@@ -27,3 +25,7 @@ def login_view(request):
 
     # 如果是 GET 請求，顯示登入表單
     return render(request, 'login.html')
+
+def logout_view(request):
+    logout(request)
+    return redirect('/')
