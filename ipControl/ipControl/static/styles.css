@@ -1,0 +1,5 @@
+/* 吃不到 */
+.jumbotron {
+    background-image: url("img/rocket_notext.jpg");
+    background-size: cover;
+}
