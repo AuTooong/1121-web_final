@@ -1,11 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>IP 概觀</title>
-  <meta charset="utf-8">
-</head>
+{% extends "master.html" %}
+{% load static %}
 
-<body>
-    <p>test</p>
-</body>
-</html>
+{% block title %}
+  IP 控管主頁
+{% endblock %}
+
+
+{% block content %}
+<div class="container mt-2">
+  <div class='row'>
+    {% for ip in all_ip %}
+    <li>{{ ip.ip }}</li>
+    {% endfor %}
+  </div>    
+</div>
+{% endblock %}
