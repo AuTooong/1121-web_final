@@ -1,0 +1,6 @@
+.jumbotron {
+    background-image: url("img/banner.png");
+    background-size: cover;
+    vertical-align: middle;
+    min-height: 600px;
+}
