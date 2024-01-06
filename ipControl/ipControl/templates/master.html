@@ -11,9 +11,9 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'custom.css' %}"> 
 
-<body> 
+<body class="custom-bg-primary"> 
   <div class="container-fluid mt-3">
-    <ul class="nav justify-content-center">
+    <ul class="nav custom-nav-primary justify-content-center">
       <li class="nav-item">
         <a class="nav-link" href="/">首頁</a>
       </li>
@@ -40,7 +40,7 @@
 {% block content %}
 {% endblock %}
 
-<footer class="bg-secondary text-light text-center py-3 mt-1">
+<footer class="custom-bg-secondary text-light text-center py-3 mt-1">
   <div class="container">
       <p>&copy; 2024 巴巴山 IP 控管</p>
   </div>
