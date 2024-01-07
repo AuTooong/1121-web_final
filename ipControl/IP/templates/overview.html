@@ -70,8 +70,8 @@ const is_staff = {{ user.is_staff|lower }};
 
 
 
-
-renderTable('overview', 'overview');
+if(is_staff) renderTableStaff('overview', 'overview');
+else renderTable('overview', 'overview');
 $('#current_filter').val('overview');
 
 function filterData(criteria) {
@@ -119,7 +119,7 @@ function renderTable(tabId, criteria) {
     $(`#${tabId}`).html(tableHtml);
 }
 
-function renderTableStaff(){
+function renderTableStaff(tabId, criteria){
     if(!is_staff) return;
     const filteredData = filterData(criteria);
     var tableHtml = `<table class="table table-striped table-dark">
