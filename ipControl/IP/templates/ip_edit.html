@@ -32,6 +32,7 @@
     
     <form method="post" action="{% url 'ip_edit' ip_str=ip.ip %}">
         {% csrf_token %}
+        <div class="custom-input">
             <label for="service">Service:</label>
             <input type="text" id="service" name="service" value="{{ ip.service }}"><br>
             
@@ -47,7 +48,8 @@
             <label for="owner_id">Owner ID:</label>
             <input type="text" id="owner_id" name="owner_id" value="{{ ip.owner_id }}"><br>
             
-            <input type="submit" value="Save Changes">
+            </div>
+            <input type="submit" value="Save">
     </form>
 
     <p>Back to <a href="/ip/overview">所有 IP</a></p>

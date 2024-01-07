@@ -41,3 +41,8 @@ button.nav-link:hover {
 .custom-message {
     color: #49E890;
 }
+
+.custom-input input {
+    background-color: #404550;
+    color: #FFF;
+}
