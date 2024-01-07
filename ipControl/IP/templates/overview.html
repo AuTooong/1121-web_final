@@ -20,6 +20,10 @@
           <th scope="col">服務種類</th>
           <th scope="col">軟體名稱</th>
           <th scope="col">OS</th>
+          {% if user.is_staff %}
+          <th scope="col">unix_like</th>
+          <th scope="col">owner</th>
+          {% endif %}
         </tr>
       </thead>
     {% for ip in results %}
@@ -29,6 +33,14 @@
           <td>{{ ip.service }}</td>
           <td>{{ ip.product }}</td>
           <td>{{ ip.os }}</td>
+          {% if user.is_staff %}
+          <td>{{ ip.unix_like }}</td>
+          {% for owner in owners %}
+            {% if owner.id == ip.owner_id %}
+              <td>{{ owner.name }}</td>
+            {% endif %}
+          {% endfor %}
+          {% endif %}
         </tr>
       </tbody>
     {% endfor %}
