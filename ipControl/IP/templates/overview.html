@@ -154,8 +154,8 @@ $('.nav-link').on('click', function (e) {
     const tabId = $(this).attr('aria-controls');
     const criteria = $(this).attr('id').split('-')[0];
     $('#current_filter').val( $(this).attr('aria-controls'));
-    if(!is_staff) renderTable(tabId, criteria);
-    else renderTableStaff(tabId, criteria)
+    if(is_staff) renderTableStaff(tabId, criteria);
+    else renderTable(tabId, criteria);
 });
 
 
