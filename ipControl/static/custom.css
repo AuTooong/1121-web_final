@@ -8,7 +8,7 @@
 
 /* Bootstrap 顏色很難改，直接用 custom */
 /* 文字請用 text-light */
-/*
+
 .custom-bg-primary {
     background-color: #303030;
 }
@@ -20,4 +20,12 @@
 .custom-nav-primary > li > a {
     color: #50E890;
 }
+<<<<<<< Updated upstream
 */
+=======
+
+.custom-body {
+    color: #49E890;
+}
+
+>>>>>>> Stashed changes
