@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm
 from .models import User
 from django.template import loader
 from django.http import HttpResponse
 from ipControl.views import index
+from django.contrib import messages
 
 # Create your views here.
 def login_view(request):
@@ -29,3 +31,18 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('/')
+
+def register_view(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            messages.success(request, '註冊成功')
+            return redirect('/')
+        else:
+            messages.error(request, '註冊失敗，請檢查輸入資料')
+    else:
+        form = UserCreationForm()
+    
+    return render(request, 'register.html', {'form': form})

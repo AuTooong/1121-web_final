@@ -96,8 +96,9 @@ function renderTable(tabId, criteria) {
                         <tr>
                             <td>${item.ip}</td>
                             <td>${item.service}</td>
-                            <td>${item.product}</td>
+                            <td>${item.product}</a></td>
                             <td>${item.os}</td>
+                            <a href="/owner/details/{{ owner.id }}">
                         </tr>`).join('')}
                   </tbody>
                 </table>`
