@@ -17,9 +17,12 @@
   <div class='row'>
     <div class="col-md-12">
         <h2 class='text-success'>About</h2>
+        <p>
+          這是一個簡單的 IP 控管網站，您可以在這裡管理所有設備，並且可以查看設備資訊。
+        </p>
         {% if not user.is_authenticated %}
         <p>
-          歡迎加入我們的網站！作為我們網球俱樂部的會員
+          歡迎加入我們的網站！作為我們的 IP 控管會員，您可以輕鬆管理所有設備，並且可以查看設備資訊。
           <a href="/account/login" class="btn btn-primary">登入</a>  
         </p>
         {% endif %}

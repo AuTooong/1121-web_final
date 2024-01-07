@@ -17,3 +17,11 @@ def overview(request):
     'results': results
   }
   return HttpResponse(template.render(context, request))
+
+def owner_detail(request, owner_id):
+  owner = Owner.objects.get(pk=owner_id)
+  template = loader.get_template('owner_detail.html')
+  context = {
+    'owners': owner,
+  }
+  return HttpResponse(template.render(context, request))

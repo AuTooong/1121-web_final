@@ -1,0 +1,17 @@
+{% extends "master.html" %}
+{% load static %}
+
+{% block title %}
+  IP 控管主頁
+{% endblock %}
+
+
+
+{% block content %}
+<div class="container">
+    <h1>{{owners.name}}</h1>
+    <p>科系：{{owners.unit}}</p>
+    <p>分機：{{owners.ext}}</p>
+    <p>Back to <a href="/ip/overview">所有 IP</a></p>
+</div>
+{% endblock %}

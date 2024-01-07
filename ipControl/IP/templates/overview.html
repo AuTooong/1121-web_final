@@ -38,7 +38,7 @@
           <td>{{ ip.unix_like }}</td>
           {% for owner in owners %}
             {% if owner.id == ip.owner_id %}
-              <td>{{ owner.name }}</td>
+            <td><a href="/owner/details/{{ owner.id }}">{{ owner.name }}</a></td>
             {% endif %}
           {% endfor %}
           {% endif %}
