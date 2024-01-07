@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import IP, Owner
 from django.template import loader
 from django.http import HttpResponse
 from django.db.models import Q
+from django.contrib import messages
 
 def overview(request):
   ip_query = request.GET.get('ip_query')
@@ -32,3 +33,26 @@ def owner_detail(request, owner_id):
     'owners': owner,
   }
   return HttpResponse(template.render(context, request))
+
+def ip_edit(request, ip_str):
+    ip = IP.objects.filter(ip=ip_str).first()
+    message = None
+
+    if request.method == 'POST':
+        ip.service = request.POST.get('service')
+        ip.product = request.POST.get('product')
+        ip.os = request.POST.get('os')
+        ip.unix_like = bool(request.POST.get('unix_like'))
+        ip.owner_id = int(request.POST.get('owner_id'))
+        ip.save()
+
+        messages.success(request, '修改成功')
+
+        # 重導向回 ip_edit
+        return redirect('ip_edit', ip_str=ip.ip)
+
+    template = loader.get_template('ip_edit.html')
+    context = {
+        'ip': ip,
+    }
+    return HttpResponse(template.render(context, request))

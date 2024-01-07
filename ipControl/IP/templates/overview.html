@@ -131,6 +131,7 @@ function renderTableStaff(tabId, criteria){
                             <th scope="col">OS</th>
                             <th scope="col">unix_like</th>
                             <th scope="col">owner</th>
+                            <th scope="col"></th>
                         </thead>
                         <tbody>
                         ${filteredData.map(item => `
@@ -141,8 +142,10 @@ function renderTableStaff(tabId, criteria){
                                 <td>${item.os}</td>
                                 <td>${item.unix_like}</td>
                                 <td><a href="/owner/details/${item.owner_id}">${item.owner_name}</td>
+                                <td><a href="/ip/edit/${item.ip}">編輯</a></td>
                                 <td>
                             </tr>`).join('')}
+                                
                         </tbody>
                         </table>`;
     $(`#${tabId}`).html(tableHtml);

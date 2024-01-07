@@ -1,0 +1,56 @@
+{% extends "master.html" %}
+{% load static %}
+
+{% block title %}
+  IP 控管主頁
+{% endblock %}
+
+{% block content %}
+<div class="container text-light">
+    {% if messages %}
+        <div id="success-message">
+            <ul class="custom-messages">
+                {% for message in messages %}
+                    {% if message.tags %}
+                        {{ message }}
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        <script>
+            // 隱藏成功消息
+            setTimeout(function() {
+                var successMessage = document.getElementById('success-message');
+                if (successMessage) {
+                    successMessage.style.display = 'none';
+                }
+            }, 3000);
+        </script>
+    {% endif %}
+
+    <h2>Edit IP: {{ ip.ip }}</h2>
+    
+    <form method="post" action="{% url 'ip_edit' ip_str=ip.ip %}">
+        {% csrf_token %}
+            <label for="service">Service:</label>
+            <input type="text" id="service" name="service" value="{{ ip.service }}"><br>
+            
+            <label for="product">Product:</label>
+            <input type="text" id="product" name="product" value="{{ ip.product }}"><br>
+            
+            <label for="os">OS:</label>
+            <input type="text" id="os" name="os" value="{{ ip.os }}"><br>
+            
+            <label for="unix_like">Unix Like:</label>
+            <input type="checkbox" id="unix_like" name="unix_like" {% if ip.unix_like %}checked{% endif %}><br>
+            
+            <label for="owner_id">Owner ID:</label>
+            <input type="text" id="owner_id" name="owner_id" value="{{ ip.owner_id }}"><br>
+            
+            <input type="submit" value="Save Changes">
+    </form>
+
+    <p>Back to <a href="/ip/overview">所有 IP</a></p>
+    </div>
+    {% endblock %}
+
