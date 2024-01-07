@@ -20,12 +20,21 @@
 .custom-nav-primary > li > a {
     color: #50E890;
 }
-<<<<<<< Updated upstream
-*/
-=======
+
+.custom-nav-primary > ul > li > button {
+    color: #50E890;
+}
+
+/* .custom-nav-primary > ul > li > button:hover */
+a.nav-link:hover {
+    color: #3ca266;
+}
+
+button.nav-link:hover {
+    color: #3ca266;
+}
 
 .custom-body {
     color: #49E890;
 }
 
->>>>>>> Stashed changes
