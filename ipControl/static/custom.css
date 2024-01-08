@@ -34,7 +34,19 @@
     color: #50E890;
 }
 
+a {
+    color: #50E890;
+}
+
+button.nav-link {
+    color: #50E890;
+}
+
 a.nav-link:hover {
+    color: #3ca266;
+}
+
+a:hover {
     color: #3ca266;
 }
 
@@ -53,4 +65,13 @@ button.nav-link:hover {
 .custom-input input {
     background-color: #404550;
     color: #FFF;
+}
+
+.custom-btn-primary {
+    background-color: #42be75;
+    outline-color: #42be75;
+}
+
+.custom-btn-primary:hover {
+    background-color: #3ca266;
 }

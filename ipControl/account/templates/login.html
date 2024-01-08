@@ -15,15 +15,15 @@
                     {% if error_message %}
                         <p class="text-danger">{{ error_message }}</p>
                     {% endif %}
-                    <div class="form-group">
-                        <label for="id_username">使用者名稱:</label>
+                    <div class="form-group mb-3">
+                        <label for="id_username" class="mb-2">使用者名稱:</label>
                         <input type="text" name="username" id="id_username" class="form-control" required autofocus>
                     </div>
-                    <div class="form-group">
-                        <label for="id_password">密碼:</label>
+                    <div class="form-group mb-5">
+                        <label for="id_password" class="mb-2">密碼:</label>
                         <input type="password" name="password" id="id_password" class="form-control" required>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">登入</button>
+                    <button type="submit" class="btn custom-btn-primary btn-block">登入</button>
                 </form>
                 <div class="text-center" style="margin-top: 1em;">
                     <p>還沒有帳戶？ <a href="/account/register">註冊</a></p>
