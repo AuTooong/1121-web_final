@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import IP, Owner
 from django.template import loader
 from django.http import HttpResponse
@@ -57,5 +57,22 @@ def ip_edit(request, ip_str):
         'ip': ip,
         'owners': owners,
 
+    }
+    return HttpResponse(template.render(context, request))
+
+def owner_edit(request, owner_id):
+    owner = get_object_or_404(Owner, pk=owner_id)
+
+    if request.method == 'POST':
+        owner.name = request.POST.get('name')
+        owner.unit = request.POST.get('unit')
+        owner.ext = request.POST.get('ext')
+        owner.save()
+
+        messages.success(request, '修改成功')
+
+    template = loader.get_template('owner_edit.html')
+    context = {
+        'owner': owner,
     }
     return HttpResponse(template.render(context, request))

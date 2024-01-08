@@ -1,0 +1,51 @@
+{% extends "master.html" %}
+{% load static %}
+
+{% block title %}
+  修改擁有者信息
+{% endblock %}
+
+{% block content %}
+<div class="container text-light">
+    {% if messages %}
+        <div id="success-message">
+            <ul class="custom-messages">
+                {% for message in messages %}
+                    {% if message.tags %}
+                        {{ message }}
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        <script>
+            // 隱藏成功消息
+            setTimeout(function() {
+                var successMessage = document.getElementById('success-message');
+                if (successMessage) {
+                    successMessage.style.display = 'none';
+                }
+            }, 3000);
+        </script>
+    {% endif %}
+
+    <h1>修改擁有者信息</h1>
+
+    <form method="post" action="{% url 'owner_edit' owner_id=owner.id %}">
+        {% csrf_token %}
+
+        <label for="name">姓名：</label>
+        <input type="text" id="name" name="name" value="{{ owner.name }}"><br>
+
+        <label for="unit">科系：</label>
+        <input type="text" id="unit" name="unit" value="{{ owner.unit }}"><br>
+
+        <label for="ext">分機：</label>
+        <input type="text" id="ext" name="ext" value="{{ owner.ext }}"><br>
+
+        <input type="submit" value="save">
+    </form>
+
+    <p>Back to <a href="{% url 'owner_details' owner_id=owner.id %}">擁有者資料</a></p>
+</div>
+{% endblock %}
+
