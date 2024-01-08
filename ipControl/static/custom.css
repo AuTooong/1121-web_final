@@ -93,3 +93,9 @@ button.nav-link:hover {
 #total-ip > p{
     font-size: large;
 }
+
+footer {
+    height: 150px;
+    display: flex;
+    align-items: center; /* Vertical centering */
+}

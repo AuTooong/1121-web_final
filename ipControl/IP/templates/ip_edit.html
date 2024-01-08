@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-  IP 控管主頁
+  修改IP資訊
 {% endblock %}
 
 {% block content %}
@@ -28,35 +28,38 @@
         </script>
     {% endif %}
 
-    <h2>Edit IP: {{ ip.ip }}</h2>
-    
-    <form method="post" action="{% url 'ip_edit' ip_str=ip.ip %}">
-        {% csrf_token %}
-        <div class="custom-input">
-            <label for="service">Service:</label>
-            <input type="text" id="service" name="service" value="{{ ip.service }}"><br>
-            
-            <label for="product">Product:</label>
-            <input type="text" id="product" name="product" value="{{ ip.product }}"><br>
-            
-            <label for="os">OS:</label>
-            <input type="text" id="os" name="os" value="{{ ip.os }}"><br>
-            
-            <label for="unix_like">Unix 系統:</label>
-            <input type="checkbox" id="unix_like" name="unix_like" {% if ip.unix_like %}checked{% endif %}><br>
-            
-            <label for="owner_id">擁有者:</label>
-            <select id="owner" name="owner_id">
-              {% for owner in owners %}
-                <option value="{{ owner.id }}" {% if owner.id == ip.owner_id %}selected{% endif %}>{{ owner.name }}</option>
-              {% endfor %}
-            </select><br>
-
+    <h2>修改 IP 資訊：{{ ip.ip }}</h2>
+    <div class="mt-3 mb-5">
+        <form class="custom-form" method="post" action="{% url 'ip_edit' ip_str=ip.ip %}">
+            {% csrf_token %}
+            <div class="mb-2">
+                <label for="service">服務種類：</label>
+                <input type="text" id="service" name="service" value="{{ ip.service }}">
             </div>
-            <input type="submit" value="Save">
-    </form>
-
-    <p>Back to <a href="/ip/overview">所有 IP</a></p>
+            <div class="mb-2">
+                <label for="product">軟體名稱：</label>
+                <input type="text" id="product" name="product" value="{{ ip.product }}">
+            </div>
+            <div class="mb-2">
+                <label for="os">OS：</label>
+                <input type="text" id="os" name="os" value="{{ ip.os }}"><br>
+            </div>
+            <div class="mb-2">
+                <label for="unix_like">是否為 Unix 系統：</label>
+                <input type="checkbox" id="unix_like" name="unix_like" {% if ip.unix_like %}checked{% endif %}><br>
+            </div>
+            <div class="mb-2">
+                <label for="owner_id">擁有者：</label>
+                <select id="owner" name="owner_id">
+                {% for owner in owners %}
+                    <option value="{{ owner.id }}" {% if owner.id == ip.owner_id %}selected{% endif %}>{{ owner.name }}</option>
+                {% endfor %}
+                </select>
+            </div>
+            <input type="submit" class="btn custom-btn-primary" value="儲存">
+        </form>
+    </div>
+    <p>回到<a href="/ip/overview">所有 IP</a></p>
     </div>
     {% endblock %}
 

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-  修改擁有者信息
+  修改擁有者資訊
 {% endblock %}
 
 {% block content %}
@@ -30,22 +30,25 @@
 
     <h1>修改擁有者資料</h1>
 
-    <form method="post" action="{% url 'owner_edit' owner_id=owner.id %}">
+    <form class="mb-5" method="post" action="{% url 'owner_edit' owner_id=owner.id %}">
         {% csrf_token %}
+        <div class="mb-2">
+            <label for="name">姓名：</label>
+            <input type="text" id="name" name="name" value="{{ owner.name }}">
+        </div>
+        <div class="mb-2">
+            <label for="unit">科系：</label>
+            <input type="text" id="unit" name="unit" value="{{ owner.unit }}">
+        </div>
+        <div class="mb-3">
+            <label for="ext">分機：</label>
+            <input type="text" id="ext" name="ext" value="{{ owner.ext }}">
+        </div>
 
-        <label for="name">姓名：</label>
-        <input type="text" id="name" name="name" value="{{ owner.name }}"><br>
-
-        <label for="unit">科系：</label>
-        <input type="text" id="unit" name="unit" value="{{ owner.unit }}"><br>
-
-        <label for="ext">分機：</label>
-        <input type="text" id="ext" name="ext" value="{{ owner.ext }}"><br>
-
-        <input type="submit" value="save">
+        <input class="btn custom-btn-primary" type="submit" value="儲存">
     </form>
 
-    <p>Back to <a href="{% url 'owner_details' owner_id=owner.id %}">擁有者資料</a></p>
+    <p>回到<a href="{% url 'owner_details' owner_id=owner.id %}">擁有者資料</a></p>
 </div>
 {% endblock %}
 
