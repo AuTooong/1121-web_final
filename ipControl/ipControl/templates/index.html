@@ -7,23 +7,28 @@
 
 
 {% block content %}
-<div class="jumbotron p-5 mt-2 text-light">
-    <div>
-        <h1 class="display-4">巴巴山 IP 控管</h1>
-        <p class="lead">輕鬆管理所有設備</p>
+<div class="jumbotron-container">
+    <div class="jumbotron p-5 mt-2 text-light">
+        <div class="p-5">
+            <h1 class="display-4">巴巴山 IP 控管</h1>
+            <p class="lead">輕鬆管理所有設備</p>
+        </div>
     </div>
 </div>
-<div class="container mt-2 text-light">
+<div class="container mt-4 text-light">
   <div class='row'>
     <div class="col-md-12">
-        <h2 class='text-success'>About</h2>
-        <p>
-          這是一個簡單的 IP 控管網站，您可以在這裡管理所有設備，並且可以查看設備資訊。
-        </p>
+        <h2 class='custom-primary'>巴巴山 IP 控管工具</h2>
+            <div class="mt-4 mb-4">  
+                <p>
+                    巴巴山 IP 控管是一個方便的網站，讓您輕鬆管理內網IP。<br>
+                    登入後，您能夠即時查詢並篩選各種功能的 IP ，例如查看 NAS 設備、查看使用 Windows 系統的 IP 等。這個簡單易用的網頁讓您掌握內網的狀況，讓管理更加高效。
+                </p>
+            </div>
         {% if not user.is_authenticated %}
         <p>
           歡迎加入我們的網站！作為我們的 IP 控管會員，您可以輕鬆管理所有設備，並且可以查看設備資訊。
-          <a href="/account/login" class="btn btn-primary">登入</a>  
+          <a href="/account/login" class="btn custom-btn-primary">登入</a>  
         </p>
         {% endif %}
     </div>
