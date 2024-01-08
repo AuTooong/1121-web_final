@@ -75,3 +75,21 @@ button.nav-link:hover {
 .custom-btn-primary:hover {
     background-color: #3ca266;
 }
+
+
+/* styles for ip overview bar */
+#ip-bar{
+    display: flex;
+    justify-content: space-between;
+}
+
+#search-bar{
+    flex: 1;
+}
+
+#total-ip{
+    text-align: right;
+}
+#total-ip > p{
+    font-size: large;
+}

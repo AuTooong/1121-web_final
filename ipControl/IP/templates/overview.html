@@ -7,13 +7,17 @@
 
 {% block content %}
 <div class="container">
-
-    <div class="mt-4">
-        <form action="/ip/overview">
-            <input type="text" name="ip_query" placeholder="Search IP...">
-            <input type="hidden" id="current_filter" name="current_filter" value="overview">
-            <input type="submit" value="搜尋">
-        </form>
+    <div id="ip-bar" class="mt-4">
+        <div id="search-bar">
+            <form action="/ip/overview">
+                <input type="text" name="ip_query" placeholder="搜尋 IP...">
+                <input type="hidden" id="current_filter" name="current_filter" value="overview">
+                <input class="btn custom-btn-primary" type="submit" value="搜尋">
+            </form>
+        </div>
+        <div class="text-light" id="total-ip">
+            <p>此類別的 IP 數量：<span id="ipCountSpan">{{ data|length }}</span></p>
+        </div>
     </div>
 
 
@@ -64,11 +68,8 @@
                 <div class="tab-pane fade" id="office" aria-controls="office" role="tabpanel" aria-labelledby="office-tab"></div>
             </div>
 
-        <div class="tab-pane fade show active d-flex justify-content-between" aria-controls="overview" role="tabpanel" aria-labelledby="overview-tab">
+            <div class="tab-pane fade show active d-flex justify-content-between" aria-controls="overview" role="tabpanel" aria-labelledby="overview-tab">
             <div id="ipTable"></div>
-            <div class="text-light" id="ipCountContainer">
-                <p>此類別的 IP 數量：<span id="ipCountSpan">{{ data|length }}</span></p>
-            </div>
         </div>
     </div>
     
