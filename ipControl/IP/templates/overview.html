@@ -9,10 +9,10 @@
 <div class="container">
     <div id="ip-bar" class="mt-4">
         <div id="search-bar">
-            <form action="/ip/overview">
-                <input type="text" name="ip_query" placeholder="搜尋 IP...">
-                <input type="hidden" id="current_filter" name="current_filter" value="overview">
-                <input class="btn custom-btn-primary" type="submit" value="搜尋">
+            <form id="search-form" action="/ip/overview">
+                    <input type="text" name="ip_query" placeholder="搜尋 IP...">
+                    <input type="hidden" id="current_filter" name="current_filter" value="overview">
+                    <input class="btn custom-btn-primary ms-2 mt-1 mb-2" type="submit" value="搜尋">
             </form>
         </div>
         <div class="text-light" id="total-ip">
@@ -235,6 +235,12 @@ $('.ip-tab').on('click', function (e) {
 });
 
 
+document.getElementById("search-form").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault(); // Prevents default Enter key behavior (like new line)
+        document.getElementById("search-form").submit(); // Submits the form
+    }
+});
 
 </script>
 
