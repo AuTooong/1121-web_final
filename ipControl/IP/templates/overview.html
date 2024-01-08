@@ -24,13 +24,39 @@
                 <button class="nav-link ip-tab" id="iot-tab" data-bs-toggle="tab" data-bs-target="#iot" type="button" role="tab" aria-controls="iot" aria-selected="false">物聯網設備</button>
             </li>
             <li class="nav-item" role="presentation">
+                <button class="nav-link ip-tab" id="network-tab" data-bs-toggle="tab" data-bs-target="#network" type="button" role="tab" aria-controls="network" aria-selected="false">網路設備</button>
+            </li>
+
+            <li class="nav-item" role="presentation">
                 <button class="nav-link ip-tab" id="nas-tab" data-bs-toggle="tab" data-bs-target="#nas" type="button" role="tab" aria-controls="nas" aria-selected="false">NAS</button>
             </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link ip-tab" id="vm-tab" data-bs-toggle="tab" data-bs-target="#vm" type="button" role="tab" aria-controls="vm" aria-selected="false">VM</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link ip-tab" id="windows-tab" data-bs-toggle="tab" data-bs-target="#windows" type="button" role="tab" aria-controls="windows" aria-selected="false">Windows</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link ip-tab" id="unix-tab" data-bs-toggle="tab" data-bs-target="#unix" type="button" role="tab" aria-controls="unix" aria-selected="false">Unix</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link ip-tab" id="office-tab" data-bs-toggle="tab" data-bs-target="#office" type="button" role="tab" aria-controls="office" aria-selected="false">辦公電腦</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link ip-tab" id="unknown-tab" data-bs-toggle="tab" data-bs-target="#unknown" type="button" role="tab" aria-controls="unknown" aria-selected="false">待確認</button>
+            </li>
         </ul>
+
             <div class="tab-content text-light" id="myTabContent">
                 <div class="tab-pane fade show active" id="overview" aria-controls="overview" role="tabpanel" aria-labelledby="overview-tab"></div>
                 <div class="tab-pane fade" id="iot" aria-controls="iot" role="tabpanel" aria-labelledby="iot-tab"></div>
                 <div class="tab-pane fade" id="nas" aria-controls="nas" role="tabpanel" aria-labelledby="nas-tab"></div>
+                <div class="tab-pane fade" id="vm" aria-controls="vm" role="tabpanel" aria-labelledby="vm-tab"></div>
+                <div class="tab-pane fade" id="network" aria-controls="network" role="tabpanel" aria-labelledby="network-tab"></div>
+                <div class="tab-pane fade" id="windows" aria-controls="windows" role="tabpanel" aria-labelledby="windows-tab"></div>
+                <div class="tab-pane fade" id="unix" aria-controls="unix" role="tabpanel" aria-labelledby="unix-tab"></div>
+                <div class="tab-pane fade" id="unknown" aria-controls="unknown" role="tabpanel" aria-labelledby="unknown-tab"></div>
+                <div class="tab-pane fade" id="office" aria-controls="office" role="tabpanel" aria-labelledby="office-tab"></div>
             </div>
     </div>
 </div>
@@ -81,9 +107,11 @@ function filterData(criteria) {
             return item.service === "印表機"
                 || item.service === "攝影機";
         }
+        /* 先算在 network 裡面
         else if(criteria === 'server'){
             return item.service === "伺服器主機";
         }
+        */
         else if(criteria === 'nas'){
             return item.service === "NAS";
         }
@@ -91,6 +119,22 @@ function filterData(criteria) {
             return item.service === "待確認";
         }
         else if(criteria == 'overview') return true; // overview
+        else if (criteria === 'vm') {
+            return item.service === "VM";
+        }
+        else if (criteria === 'network') {
+            return item.service === "無線網路基地台"
+                || item.service === "伺服器主機";
+        }
+        else if (criteria === 'windows') {
+            return item.os.includes("Windows");
+        }
+        else if (criteria === 'unix') {
+            return item.unix_like === "True";
+        }
+        else if (criteria === 'office') {
+            return item.service === "辦公電腦";
+        }
         else return false;
     });
 }
