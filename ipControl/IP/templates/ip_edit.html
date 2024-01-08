@@ -42,12 +42,16 @@
             <label for="os">OS:</label>
             <input type="text" id="os" name="os" value="{{ ip.os }}"><br>
             
-            <label for="unix_like">Unix Like:</label>
+            <label for="unix_like">Unix 系統:</label>
             <input type="checkbox" id="unix_like" name="unix_like" {% if ip.unix_like %}checked{% endif %}><br>
             
-            <label for="owner_id">Owner ID:</label>
-            <input type="text" id="owner_id" name="owner_id" value="{{ ip.owner_id }}"><br>
-            
+            <label for="owner_id">擁有者:</label>
+            <select id="owner" name="owner_id">
+              {% for owner in owners %}
+                <option value="{{ owner.id }}" {% if owner.id == ip.owner_id %}selected{% endif %}>{{ owner.name }}</option>
+              {% endfor %}
+            </select><br>
+
             </div>
             <input type="submit" value="Save">
     </form>

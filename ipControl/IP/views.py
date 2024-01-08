@@ -36,6 +36,7 @@ def owner_detail(request, owner_id):
 
 def ip_edit(request, ip_str):
     ip = IP.objects.filter(ip=ip_str).first()
+    owners = Owner.objects.all()
     message = None
 
     if request.method == 'POST':
@@ -54,5 +55,7 @@ def ip_edit(request, ip_str):
     template = loader.get_template('ip_edit.html')
     context = {
         'ip': ip,
+        'owners': owners,
+
     }
     return HttpResponse(template.render(context, request))
