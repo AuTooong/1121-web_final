@@ -108,7 +108,7 @@ const is_staff = {{ user.is_staff|lower }};
         "service": "{{ item.service }}",
         "product": "{{ item.product }}",
         "os": "{{ item.os }}",
-        "unix_like": "{{ item.unix_like }}",
+        "unix_like": {{ item.unix_like|lower }},
         "owner_id": owner_id,
         "owner_name": owner_name,
     };
@@ -141,7 +141,6 @@ function filterData(criteria) {
         else if (criteria === 'unknown') {
             return item.service === "待確認";
         }
-        else if(criteria == 'overview') return true; // overview
         else if (criteria === 'vm') {
             return item.service === "VM";
         }
@@ -153,11 +152,12 @@ function filterData(criteria) {
             return item.os.includes("Windows");
         }
         else if (criteria === 'unix') {
-            return item.unix_like === "True";
+            return item.unix_like === true;
         }
         else if (criteria === 'office') {
             return item.service === "辦公電腦";
         }
+        else if(criteria == 'overview') return true; // overview
         else return false;
     });
 }
@@ -207,7 +207,7 @@ function renderTableStaff(tabId, criteria){
                                 <td>${item.service}</td>
                                 <td>${item.product}</td>
                                 <td>${item.os}</td>
-                                <td>${item.unix_like}</td>
+                                <td>${item.unix_like ? "是" : "否"}</td>
                                 <td><a href="/owner/details/${item.owner_id}">${item.owner_name}</td>
                                 <td><a href="/ip/edit/${item.ip}">編輯</a></td>
                                 <td>
