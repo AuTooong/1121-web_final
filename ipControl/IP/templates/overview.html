@@ -7,6 +7,7 @@
 
 {% block content %}
 <div class="container">
+
     <div class="mt-4">
         <form action="/ip/overview">
             <input type="text" name="ip_query" placeholder="Search IP...">
@@ -14,6 +15,8 @@
             <input type="submit" value="搜尋">
         </form>
     </div>
+
+
       
     <div class="mt-4">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -45,6 +48,8 @@
             <li class="nav-item" role="presentation">
                 <button class="nav-link ip-tab" id="unknown-tab" data-bs-toggle="tab" data-bs-target="#unknown" type="button" role="tab" aria-controls="unknown" aria-selected="false">待確認</button>
             </li>
+
+    </div>
         </ul>
 
             <div class="tab-content text-light" id="myTabContent">
@@ -58,13 +63,28 @@
                 <div class="tab-pane fade" id="unknown" aria-controls="unknown" role="tabpanel" aria-labelledby="unknown-tab"></div>
                 <div class="tab-pane fade" id="office" aria-controls="office" role="tabpanel" aria-labelledby="office-tab"></div>
             </div>
+
+        <div class="tab-pane fade show active d-flex justify-content-between" aria-controls="overview" role="tabpanel" aria-labelledby="overview-tab">
+            <div id="ipTable"></div>
+            <div class="text-light" id="ipCountContainer">
+                <p>此類別的 IP 數量：<span id="ipCountSpan">{{ data|length }}</span></p>
+            </div>
+        </div>
     </div>
+    
+
+
+</div>
+
+
 </div>
 
 <script>
+
 var owners = [];
 var data = [];
 const is_staff = {{ user.is_staff|lower }};
+
 
 {% for owner in owners %}
     var obj = {
@@ -94,6 +114,8 @@ const is_staff = {{ user.is_staff|lower }};
     data.push(obj);
 {% endfor %}
 
+const initialIpCount = data.length;
+$('#ipCountSpan').text(initialIpCount);
 
 
 if(is_staff) renderTableStaff('overview', 'overview');
@@ -193,6 +215,7 @@ function renderTableStaff(tabId, criteria){
                         </tbody>
                         </table>`;
     $(`#${tabId}`).html(tableHtml);
+
 }
 
 
@@ -201,6 +224,11 @@ $('.ip-tab').on('click', function (e) {
     const tabId = $(this).attr('aria-controls');
     const criteria = $(this).attr('id').split('-')[0];
     $('#current_filter').val( $(this).attr('aria-controls'));
+    // 計算 IP 數量
+    const filteredData = filterData(criteria);
+    const ipCount = filteredData.length;
+    $('#ipCountSpan').text(ipCount);
+
     if(is_staff) renderTableStaff(tabId, criteria);
     else renderTable(tabId, criteria);
 });
