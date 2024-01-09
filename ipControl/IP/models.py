@@ -9,7 +9,8 @@ class IP(models.Model):
     product = models.CharField(max_length=20)
     os = models.CharField(max_length=20)
     unix_like = models.BooleanField()
-    owner_id = models.IntegerField()
+    owner = models.ForeignKey("Owner",
+                              on_delete=models.PROTECT)
     def __str__(self):
         return f"{self.id} {self.ip} {self.service} {self.product} {self.os} {self.unix_like} {self.owner_id}"
 
