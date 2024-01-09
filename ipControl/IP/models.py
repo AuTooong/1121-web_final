@@ -12,7 +12,7 @@ class IP(models.Model):
     owner = models.ForeignKey("Owner",
                               on_delete=models.PROTECT)
     def __str__(self):
-        return f"{self.id} {self.ip} {self.service} {self.product} {self.os} {self.unix_like} {self.owner_id}"
+        return f"{self.id} {self.ip} {self.service} {self.product} {self.os} {self.unix_like} {self.owner}"
 
 class Owner(models.Model):
     id = models.AutoField(primary_key=True)
