@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-  修改擁有者資訊
+  修改保管人資訊
 {% endblock %}
 
 {% block content %}
@@ -28,7 +28,7 @@
         </script>
     {% endif %}
 
-    <h1>修改擁有者資料</h1>
+    <h1>修改保管人資訊</h1>
 
     <form class="mb-5" method="post" action="{% url 'owner_edit' owner_id=owner.id %}">
         {% csrf_token %}
@@ -48,7 +48,7 @@
         <input class="btn custom-btn-primary" type="submit" value="儲存">
     </form>
 
-    <p>回到<a href="{% url 'owner_details' owner_id=owner.id %}">擁有者資料</a></p>
+    <p>回到<a href="{% url 'owner_details' owner_id=owner.id %}">保管人資料</a></p>
 </div>
 {% endblock %}
 

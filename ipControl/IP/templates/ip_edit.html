@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-  修改IP資訊
+  修改 IP 資訊
 {% endblock %}
 
 {% block content %}
@@ -49,7 +49,7 @@
                 <input type="checkbox" id="unix_like" name="unix_like" {% if ip.unix_like %}checked{% endif %}><br>
             </div>
             <div class="mb-2">
-                <label for="owner_id">擁有者：</label>
+                <label for="owner_id">保管人：</label>
                 <select id="owner" name="owner_id">
                 {% for owner in owners %}
                     <option value="{{ owner.id }}" {% if owner.id == ip.owner_id %}selected{% endif %}>{{ owner.name }}</option>
