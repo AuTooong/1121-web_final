@@ -15,6 +15,9 @@
                     {% if error_message %}
                         <p class="text-danger">{{ error_message }}</p>
                     {% endif %}
+                    {% if next %}
+                    <input type="hidden" name="next" value="{{ next }}">
+                    {% endif %}
                     <div class="form-group mb-3">
                         <label for="id_username" class="mb-2">使用者名稱：</label>
                         <input type="text" name="username" id="id_username" class="form-control" required autofocus>

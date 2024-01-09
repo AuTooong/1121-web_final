@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import IP, Owner
 from django.template import loader
 from django.http import HttpResponse
-from django.db.models import Q
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def overview(request):
   ip_query = request.GET.get('ip_query')
 
@@ -26,6 +27,7 @@ def overview(request):
   }
   return HttpResponse(template.render(context, request))
 
+@login_required
 def owner_detail(request, owner_id):
   owner = Owner.objects.get(pk=owner_id)
   template = loader.get_template('owner_detail.html')
@@ -34,6 +36,7 @@ def owner_detail(request, owner_id):
   }
   return HttpResponse(template.render(context, request))
 
+@login_required
 def ip_edit(request, ip_str):
     ip = IP.objects.filter(ip=ip_str).first()
     owners = Owner.objects.all()
@@ -60,6 +63,7 @@ def ip_edit(request, ip_str):
     }
     return HttpResponse(template.render(context, request))
 
+@login_required
 def owner_edit(request, owner_id):
     owner = get_object_or_404(Owner, pk=owner_id)
 

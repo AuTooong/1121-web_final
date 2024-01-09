@@ -18,7 +18,10 @@ def login_view(request):
             print("登入成功")
             # 登入成功後的重定向，可以根據需求修改
             login(request, user)
-            return redirect('/')
+            if request.POST.get('next') is not None:
+                return redirect(request.POST.get('next'))
+            else:
+                return redirect('/')
         else:
             # 登入失敗的處理，例如顯示錯誤訊息
             print("登入失敗")
@@ -26,7 +29,8 @@ def login_view(request):
             return render(request, 'login.html', {'error_message': error_message})
 
     # 如果是 GET 請求，顯示登入表單
-    return render(request, 'login.html')
+    
+    return render(request, 'login.html', {'next' : request.GET.get('next')})
 
 def logout_view(request):
     logout(request)
